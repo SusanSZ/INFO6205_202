@@ -5,9 +5,13 @@ import GAFrame.Individual;
 
 public class Picture extends Individual {
 
-	public Fitness fitness() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	
+	/** export this picture to a .jpg file
+	 * 
+	 */
+	public void toFile() {
+		//TODO implement toFile function
 	}
 
 }
