@@ -22,7 +22,7 @@ public class GAHelper {
 	 * 
 	 * @return a random picgene
 	 */
-	public PicGene picGene_generator() {
+	public PicGene picGene_generator(int mark) {
 		Random ran = new Random();
 		int x1 = ran.nextInt(pixels_x);
 		int y1 = ran.nextInt(pixels_y);
@@ -32,14 +32,14 @@ public class GAHelper {
 		int red = ran.nextInt(256);
 		int green = ran.nextInt(256);
 		int blue = ran.nextInt(256);
-		return new PicGene(x1, x2, y1, y2, alpha, red, green, blue);
+		return new PicGene(x1, x2, y1, y2, alpha, red, green, blue, mark);
 	}
 	
 	public PicGenoType picGenoType_generator() {
 		PicGenoType genotype = new PicGenoType();
 		PicGene[] genes = new PicGene[gene_size];
 		for(int i = 0; i < gene_size; i++) {
-			genes[i] = picGene_generator();
+			genes[i] = picGene_generator(i);
 		}
 		genotype.setGenes(genes);
 		return genotype;

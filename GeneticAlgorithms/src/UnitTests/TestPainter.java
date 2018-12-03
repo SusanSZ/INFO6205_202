@@ -21,6 +21,6 @@ public class TestPainter{
 			}
 		}
 		ImagePainter painter = new ImagePainter(pixels);
-		painter.output();
+		painter.output("test.png");
 	}
 }

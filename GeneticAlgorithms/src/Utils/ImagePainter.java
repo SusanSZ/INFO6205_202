@@ -30,7 +30,7 @@ public class ImagePainter {
 	}
 	
 	public void output(String filename) {
-		File outputfile = new File("./" + filename);
+		File outputfile = new File("./outputimages/" + filename);
 		try {
 			ImageIO.write(get_image(), "png", outputfile);
 		}catch (IOException e) {

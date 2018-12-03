@@ -8,7 +8,7 @@ public abstract class Nature {
 	
 	protected List<Individual> population;
 	private int generation;
-	private int mutation_pos_percentage;
+	protected int mutation_pos_percentage;
 	protected Individual target_ind;
 	
 	public Nature() {
@@ -27,7 +27,7 @@ public abstract class Nature {
 		population.add(ind);
 	}
 	
-	public abstract void evolution();
+	public abstract void evolution(int popsize);
 	
 	public abstract void elimination();
 }

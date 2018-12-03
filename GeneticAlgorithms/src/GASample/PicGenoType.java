@@ -27,7 +27,7 @@ public class PicGenoType extends GenoType {
 	}
 
 	@Override
-	public GenoType crossover(GenoType that, int mutation_pos_percentage) {
+	public GenoType cross(GenoType that, int mutation_pos_percentage) {
 		if(this.crossoverable(that)) {
 			PicGene[] genes_1 = (PicGene[])this.getGenes();
 			PicGene[] genes_2 = (PicGene[])that.getGenes();
