@@ -14,6 +14,11 @@ public class Color {
 		this.green = green;
 		this.blue = blue;
 	}
+	
+	public int to8bit() {
+		return alpha << 24|red<<16|green<<8|blue;
+	}
+	
 	/**
 	 * 
 	 * @param background: the background color
@@ -29,6 +34,7 @@ public class Color {
 		new_color.set(new_alpha, new_red, new_green, new_blue);
 		return new_color;
 	}
+	
 	
 	public static Color avgColor(Color c1, Color c2) {
 		Color new_color = new Color();

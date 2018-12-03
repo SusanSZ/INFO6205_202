@@ -1,8 +1,8 @@
 package GAFrame;
 
 public abstract class Individual {
-	private GenoType genes;
-	private PhenoType pheno;
+	protected GenoType genes;
+	protected PhenoType pheno;
 	
 	public Individual(GenoType g) {
 		genes = g;

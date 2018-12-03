@@ -6,7 +6,7 @@ import java.util.List;
 
 import GAFrame.Individual;
 import GAFrame.Nature;
-import GateWay.PicComparator;
+import Utils.PicComparator;
 
 public class Env extends Nature{
 	@Override
