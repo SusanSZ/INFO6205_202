@@ -1,7 +1,7 @@
 package GAFrame;
 
 public abstract class GenoType {
-	private Gene[] genes;
+	protected Gene[] genes;
 	
 	public GenoType(int size) {
 		genes = new Gene[size];

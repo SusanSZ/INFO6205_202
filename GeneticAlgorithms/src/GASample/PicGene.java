@@ -29,6 +29,19 @@ public class PicGene extends Gene{
 		this.color = color;
 	}
 	
+	public int[] get_cord() {
+		int[] cords = new int[4];
+		cords[0] = x1;
+		cords[1] = y1;
+		cords[2] = x2;
+		cords[3] = y2;
+		return cords;
+	}
+	
+	public Color getColor() {
+		return color;
+	}
+	
 	@Override
 	public void mutation() {
 		

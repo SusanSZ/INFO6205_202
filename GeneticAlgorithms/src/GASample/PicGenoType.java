@@ -1,7 +1,9 @@
 package GASample;
 
+import GAFrame.Gene;
 import GAFrame.GenoType;
 import GAFrame.PhenoType;
+import Utils.Color;
 
 public class PicGenoType extends GenoType {
 	
@@ -23,7 +25,17 @@ public class PicGenoType extends GenoType {
 	
 	@Override
 	public PhenoType expression() {
-		return null;
+		Color[][] pixels = new Color[picsize_x][picsize_y];
+		for(int i = 0; i < this.getGeneNums(); i++) {
+			PicGene g = (PicGene)genes[i];
+			int[] cords = g.get_cord();
+			for(int x = cords[0]; x <= cords[2]; x++) {
+				for(int y = cords[1]; y <= cords[3]; y++) {
+					pixels[x][y] = Color.addColorToBackground(pixels[x][y], g.getColor());
+				}
+			}
+		}
+		return new PicPhenoType(pixels);
 	}
 
 	@Override

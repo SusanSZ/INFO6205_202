@@ -5,6 +5,8 @@ import Utils.ImagePainter;
 
 public class Picture extends Individual implements Comparable<Picture>{
 
+	public boolean isExpressed = false;
+	
 	public Picture(PicGenoType g) {
 		super(g);
 	}
@@ -19,8 +21,17 @@ public class Picture extends Individual implements Comparable<Picture>{
 		painter.output(filename);
 	}
 	
-	//TODO implement compare method
+	public void express() {
+		pheno =  geno.expression();
+		isExpressed = true;
+	}
+	
+	
 	public int compareTo(Picture that) {
+		//check whether genes has expressed 
+		if(!this.isExpressed) this.express();
+		if(!that.isExpressed) that.express();
+		//TODO implement compare method
 		return 0;
 	}
 	

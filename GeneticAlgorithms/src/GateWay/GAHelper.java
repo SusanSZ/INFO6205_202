@@ -54,6 +54,7 @@ public class GAHelper {
 		Env new_env = new Env();
 		for(int i = 0; i<init_pop; i++) {
 			Picture p = new Picture(picGenoType_generator());
+			p.express();
 			new_env.add_ind(p);
 		}
 		return new_env;
