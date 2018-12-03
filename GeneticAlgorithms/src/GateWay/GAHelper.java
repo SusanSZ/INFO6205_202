@@ -2,6 +2,7 @@ package GateWay;
 
 import java.util.Random;
 
+import GAFrame.Individual;
 import GASample.*;
 
 public class GAHelper {
@@ -50,8 +51,9 @@ public class GAHelper {
 	 * @param init_pop, the initial size of the population
 	 * @return the generated Environment
 	 */
-	public Env configureEnv(int init_pop) {
+	public Env configureEnv(int init_pop, Individual target_ind) {
 		Env new_env = new Env();
+		new_env.set_target(target_ind);
 		for(int i = 0; i<init_pop; i++) {
 			Picture p = new Picture(picGenoType_generator());
 			p.express();
