@@ -8,7 +8,12 @@ public class PicGenoType extends GenoType {
 	private int picsize_x;
 	private int picsize_y;
 	
+	public PicGenoType(int gene_size) {
+		super(gene_size);
+	}
+	
 	public PicGenoType() {
+		super(1);
 	}
 	
 	public void setSize(int picsize_x, int picsize_y) {

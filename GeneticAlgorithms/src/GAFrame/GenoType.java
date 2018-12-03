@@ -3,6 +3,10 @@ package GAFrame;
 public abstract class GenoType {
 	private Gene[] genes;
 	
+	public GenoType(int size) {
+		genes = new Gene[size];
+	}
+	
 	/** The function will be called during evolution
 	 * 
 	 * @param mutation_pos_percentage -> the possibility(%) that a gene will mutate during crossover
