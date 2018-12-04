@@ -1,7 +1,9 @@
 package GASample;
 
 import GAFrame.*;
+import Utils.Color;
 import Utils.ImagePainter;
+import GateWay.TargetPixel;
 
 public class Picture extends Individual implements Comparable<Picture>{
 
@@ -32,6 +34,8 @@ public class Picture extends Individual implements Comparable<Picture>{
 		if(!this.isExpressed) this.express();
 		if(!that.isExpressed) that.express();
 		//TODO implement compare method
+		Color[][] color1 = ((PicPhenoType)this.pheno).getcolors();
+		Color[][] color2 = ((PicPhenoType)that.pheno).getcolors();
 		return 0;
 	}
 	
