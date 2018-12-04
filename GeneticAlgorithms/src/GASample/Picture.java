@@ -3,7 +3,6 @@ package GASample;
 import GAFrame.*;
 import Utils.Color;
 import Utils.ImagePainter;
-import GateWay.TargetPixel;
 
 public class Picture extends Individual implements Comparable<Picture>{
 
@@ -36,7 +35,16 @@ public class Picture extends Individual implements Comparable<Picture>{
 		//TODO implement compare method
 		Color[][] color1 = ((PicPhenoType)this.pheno).getcolors();
 		Color[][] color2 = ((PicPhenoType)that.pheno).getcolors();
-		return 0;
+		int grade = 0;
+		for(int i = 0; i < ((PicPhenoType)this.pheno).getcolors().length; i++)
+			for(int j = 0; j < ((PicPhenoType)this.pheno).getcolors()[0].length; j++) {
+				int alpha = Math.abs((color1[i][j]. & 0xFF) - (color2[i][j].to8bit() & 0xFF));
+				int green = Math.abs(((color1[i][j].>>>8) & 0xFF) - ((color2[i][j].>>>8) & 0xFF));
+				int blue = Math.abs(((color1[i][j].>>>16) & 0xFF) - ((color2[i][j].>>>16) & 0xFF));
+				int red = Math.abs(((color1[i][j].>>>24) & 0xFF) - ((color2[i][j].>>>24) & 0xFF));
+				grade +=  -(alpha + red + green + blue);
+			}
+		return grade;
 	}
 	
 	public static Picture crossover(Picture p1, Picture p2, int mutation_pos) {
