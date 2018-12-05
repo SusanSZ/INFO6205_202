@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import GASample.Picture;
+
 
 public class ImagePainter {
 	private String outfile = "out.png";
