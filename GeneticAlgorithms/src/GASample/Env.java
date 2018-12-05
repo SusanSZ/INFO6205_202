@@ -15,6 +15,7 @@ public class Env extends Nature{
 	public void evolution(int popsize) {
 		// TODO Auto-generated method stub
 		Random r = new Random();
+		this.setMutationPos();
 		List<Individual> new_born = new ArrayList<>();
 		while(population.size() + new_born.size() < popsize) {
 			int n1 = r.nextInt(population.size());
@@ -50,7 +51,7 @@ public class Env extends Nature{
 	
 	public boolean shouldTerminate() {
 		if(terminate_generation <= generation) return true;
-		//if(((Picture)getBestIndividual()).compareTo((Picture)target_ind) > terminate_score) return true;
+		if(getBestScore() > terminate_score) return true;
 		return false;
 	}
 	
@@ -59,6 +60,22 @@ public class Env extends Nature{
 			elimination();
 			evolution(maintained_popsize);
 		}
+	}
+	
+	public double getBestScore() {
+		Picture best = (Picture)getBestIndividual();
+		double bestscore = best.dist((Picture)target_ind);
+		return bestscore;
+	}
+	
+	private void setMutationPos() {
+		double bestscore = getBestScore();
+		if(bestscore <= 20) mutation_pos_percentage = 60;
+		else if(bestscore <= 30) mutation_pos_percentage = 40;
+		else if(bestscore <= 50) mutation_pos_percentage = 25;
+		else if(bestscore <= 80) mutation_pos_percentage = 15;
+		else if(bestscore <= 90) mutation_pos_percentage = 5;
+		else mutation_pos_percentage = 1;
 	}
 	
 	public Comparator getPictureComparator() {

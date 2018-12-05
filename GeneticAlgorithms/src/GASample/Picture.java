@@ -6,10 +6,17 @@ import Utils.ImagePainter;
 
 public class Picture extends Individual implements Comparable<Picture>{
 
+	public static int PIXEL_X;
+	public static int PIXEL_Y;
 	public boolean isExpressed;
 	
+	public static void setXY(int x, int y) {
+		PIXEL_X = x;
+		PIXEL_Y = y;
+	}
+	
 	private Picture() {
-		super(new PicGenoType(0,0));
+		super(new PicGenoType());
 		isExpressed = true;
 	}
 	
@@ -20,6 +27,7 @@ public class Picture extends Individual implements Comparable<Picture>{
 	
 	public static Picture createTargetPicture(Color[][] colors) {
 		Picture p = new Picture();
+		Picture.setXY(colors.length, colors[0].length);
 		p.pheno = new PicPhenoType(colors);
 		return p;
 	}
@@ -29,7 +37,7 @@ public class Picture extends Individual implements Comparable<Picture>{
 	 * @param filename, the output filename, can be anything similar to sample.png
 	 */
 	public void toFile(String filename) {
-		express();
+		if(!isExpressed)express();
 		PicPhenoType picpheno = (PicPhenoType)pheno;
 		ImagePainter painter = new ImagePainter(picpheno.getcolors());
 		painter.output(filename);
@@ -50,13 +58,23 @@ public class Picture extends Individual implements Comparable<Picture>{
 		int grade = 0;
 		for(int i = 0; i < ((PicPhenoType)this.pheno).getcolors().length; i++)
 			for(int j = 0; j < ((PicPhenoType)this.pheno).getcolors()[0].length; j++) {
-				int alpha = Math.abs((color1[i][j].getAlpha()) - (color2[i][j].getAlpha()));
-				int green = Math.abs((color1[i][j].getGreen()) - (color2[i][j].getGreen()));
-				int blue = Math.abs((color1[i][j].getBlue()) - (color2[i][j].getBlue()));
-				int red = Math.abs((color1[i][j].getRed()) - (color2[i][j].getRed()));
-				grade +=  -(alpha/10 + red + green + blue);
+				int alpha_diff = Math.abs((color1[i][j].getAlpha()) - (color2[i][j].getAlpha()));
+				int green_diff = Math.abs((color1[i][j].getGreen()) - (color2[i][j].getGreen()));
+				int blue_diff = Math.abs((color1[i][j].getBlue()) - (color2[i][j].getBlue()));
+				int red_diff = Math.abs((color1[i][j].getRed()) - (color2[i][j].getRed()));
+				if(alpha_diff < 100) grade+= 1;
+				if(green_diff < 20) grade += 1;
+				if(blue_diff < 20) grade += 1;
+				if(red_diff < 20) grade += 1;
 			}
 		return grade;
+	}
+	
+	public double dist(Picture that) {
+		int grade = this.compareTo(that);
+		int total_pixels = PIXEL_X * PIXEL_Y;
+		double total_score = grade * 1.0 / (total_pixels * 4);
+		return total_score;
 	}
 	
 	public static Picture crossover(Picture p1, Picture p2, int mutation_pos) {

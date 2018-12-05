@@ -33,23 +33,24 @@ public class MainClass {
 		*/
 		
 		int width = 200;
-		int height = 200;
-		int num_genes = 2000;
+		int num_genes = 100;
 		String filename = "test.png";
-		int init_pop = 200;
-		int maintained_popsize = 500;
+		int init_pop = 400;
+		int maintained_popsize = 800;
 		int terminate_gen = 100000;
-		int terminate_score = 0;
+		int terminate_score = 95;
 		
-		GAHelper helper = new GAHelper(width, height, num_genes);
 		Color[][] targetcolors = null;
 		try {
-			targetcolors = ImageReader.getTargetColorArray("./targetimg/" + filename, width, height);
+			targetcolors = ImageReader.getTargetColorArray("./targetimg/" + filename, width);
 		} catch (IOException e) {
 			System.out.println("Warning: the image does not exists. Application will terminate right away.");
 			return;
 		}
+		int height = targetcolors[0].length;
+		GAHelper helper = new GAHelper(width, height, num_genes);
 		Picture targetPic = Picture.createTargetPicture(targetcolors);
+		targetPic.toFile("targetPic.png");
 		Env e = helper.configureEnv(init_pop, targetPic);
 		e.setPopsize(maintained_popsize);
 		e.setTerminateGen(terminate_gen);
@@ -61,11 +62,8 @@ public class MainClass {
 		System.out.println("...");
 		System.out.println("The environment will start in a while, several tips before it starts.");
 		System.out.println("\t1).Each time when generation goes to 10^n, the best individual will be stored, stored location would be \"./genimgs/\"");
-		System.out.println("\tum.....maybe no more tips regarding the application\n...\n...\n...\nGENERATION START!");
+		System.out.println("\t2)um.....maybe no more tips regarding the application\n...\n...\n...\nGENERATION START!");
 		
-		System.out.println("printing the best of first generation");
-		Picture bestofone = (Picture)e.getBestIndividual();
-		bestofone.toFile("bestofone.png");
 		while(!e.shouldTerminate()) {
 			e.startNextGeneration();
 			int current_gen = e.getGeneration();

@@ -14,6 +14,7 @@ public class GAHelper {
 	public GAHelper(int px, int py, int gene_size) {
 		pixels_x = px;
 		pixels_y = py;
+		Picture.setXY(px, py);
 		this.gene_size = gene_size;
 	}
 	
@@ -37,7 +38,7 @@ public class GAHelper {
 	}
 	
 	public PicGenoType picGenoType_generator() {
-		PicGenoType genotype = new PicGenoType(pixels_x, pixels_y);
+		PicGenoType genotype = new PicGenoType();
 		PicGene[] genes = new PicGene[gene_size];
 		for(int i = 0; i < gene_size; i++) {
 			genes[i] = picGene_generator(i);

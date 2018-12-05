@@ -32,7 +32,7 @@ public class ImageReader {
 	    return targetPixel;
 	}
 	
-	public static Color[][] getTargetColorArray(String targetPath, int width, int height) throws IOException{
+	public static Color[][] getTargetColorArray(String targetPath, int width) throws IOException{
     	File f = new File(targetPath);
     	BufferedImage img = ImageIO.read(f);
 	    BufferedImage resized = resize(img, width);

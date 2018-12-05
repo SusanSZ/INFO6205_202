@@ -1,5 +1,8 @@
 package GASample;
 
+import java.util.Arrays;
+import java.util.Random;
+
 import GAFrame.Gene;
 import GAFrame.GenoType;
 import GAFrame.PhenoType;
@@ -7,20 +10,21 @@ import Utils.Color;
 
 public class PicGenoType extends GenoType {
 	
-	private final int picsize_x;
-	private final int picsize_y;
+	private int picsize_x;
+	private int picsize_y;
 	
-	public PicGenoType(int gene_size, int x, int y) {
+	public PicGenoType(int gene_size) {
 		super(gene_size);
-		picsize_x = x;
-		picsize_y = y;
+		picsize_x = Picture.PIXEL_X;
+		picsize_y = Picture.PIXEL_Y;
 	}
 	
-	public PicGenoType(int x, int y) {
+	public PicGenoType() {
 		super(1);
-		picsize_x = x;
-		picsize_y = y;
+		picsize_x = Picture.PIXEL_X;
+		picsize_y = Picture.PIXEL_Y;
 	}
+	
 	
 //	public void setSize(int picsize_x, int picsize_y) {
 //		this.picsize_x = picsize_x;
@@ -47,23 +51,41 @@ public class PicGenoType extends GenoType {
 		}
 		return new PicPhenoType(pixels);
 	}
+	
+	private static void shuffle(PicGene[] genes) {
+		int N = genes.length;
+		for(int i = 0; i < N; i++) {
+			Random rand = new Random();
+			int r = rand.nextInt(i+1);
+			swap(genes, i, r);
+		}
+	}
+	
+	private static void swap(PicGene[] genes, int a, int b) {
+		PicGene temp = genes[a];
+		genes[a] = genes[b];
+		genes[b] = temp;
+	}
 
 	@Override
 	public GenoType cross(GenoType that, int mutation_pos_percentage) {
-		if(this.crossoverable(that)) {
-			PicGene[] genes_1 = (PicGene[])this.getGenes();
-			PicGene[] genes_2 = (PicGene[])that.getGenes();
-			int N = genes_1.length;
-			PicGene[] new_genes = new PicGene[N];
-			for(int i = 0;i<N;i++) {
-				PicGene new_gene = PicGene.produce(genes_1[i],genes_2[i]);
-				new_genes[i] = new_gene;
-			}
-			PicGenoType new_picgenotype = new PicGenoType(this.picsize_x,this.picsize_y);
-			new_picgenotype.setGenes(new_genes);
-			return new_picgenotype;
-		}
-		return null;
+		PicGene[] genes_1 = (PicGene[])this.getGenes();
+		PicGene[] genes_2 = (PicGene[])that.getGenes();
+		shuffle(genes_1);
+		shuffle(genes_2);
+		int N = genes_1.length;
+		Random rand = new Random();
+		int from_1 = rand.nextInt(N+1);
+		int from_2 = N - from_1;
+		PicGene[] fromone = Arrays.copyOfRange(genes_1, 0, from_1);
+		PicGene[] fromtwo = Arrays.copyOfRange(genes_2, 0, from_2);
+		PicGene[] new_genes = new PicGene[fromone.length+fromtwo.length];
+		System.arraycopy(fromone, 0, new_genes, 0, fromone.length);
+		System.arraycopy(fromtwo, 0, new_genes, fromone.length, fromtwo.length);
+		shuffle(new_genes);
+		PicGenoType new_picgenotype = new PicGenoType();
+		new_picgenotype.setGenes(new_genes);
+		return new_picgenotype;
 	}
 
 	@Override

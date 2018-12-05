@@ -24,6 +24,22 @@ public class Color {
 		return blue;
 	}
 	
+	public void setBlue(int b) {
+		blue = b;
+	}
+	
+	public void setAlpha(int a) {
+		alpha = a;
+	}
+	
+	public void setRed(int r) {
+		red = r;
+	}
+	
+	public void setGreen(int g){
+		green = g;
+	}
+	
 	public void set(int alpha, int red, int green, int blue) {
 		if(alpha > 255 || alpha < 0 || red > 255 || red < 0 || green > 255 || green < 0 || blue > 255 || blue < 0) {
 			System.out.println(alpha);

@@ -40,7 +40,7 @@ public class TestPainter{
 	public void testReadandResize() {
 		Color[][] targetcolors = null;
 		try {
-			targetcolors = ImageReader.getTargetColorArray("./targetimg/" + "test.png", 200, 200);
+			targetcolors = ImageReader.getTargetColorArray("./targetimg/" + "test.png", 200);
 		} catch (IOException e) {
 			System.out.println("Warning: the image does not exists. Application will terminate right away.");
 			return;
