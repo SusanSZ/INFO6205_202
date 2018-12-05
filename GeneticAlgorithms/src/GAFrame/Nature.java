@@ -19,6 +19,10 @@ public abstract class Nature {
 		population = new ArrayList<Individual>();
 	}
 	
+	public List<Individual> getPopulation(){
+		return population;
+	}
+	
 	public int getGeneration() {
 		return generation;
 	}

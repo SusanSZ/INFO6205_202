@@ -28,13 +28,17 @@ public class GAHelper {
 		int y1 = ran.nextInt(pixels_y);
 		int x2 = ran.nextInt(pixels_x);
 		int y2 = ran.nextInt(pixels_y);
-		while(x1 == x2) x2 = ran.nextInt(pixels_x);
-		while(y1 == y2) y2 = ran.nextInt(pixels_y);
-		int alpha = ran.nextInt(256);
+		int x3 = ran.nextInt(pixels_x);
+		int y3 = ran.nextInt(pixels_y);
+		while(PicGene.is_colinear(x1, x2, x3, y1, y2, y3)) {
+			x3 = ran.nextInt(pixels_x);
+			y3 = ran.nextInt(pixels_y);
+		}
+		int alpha = 50 + ran.nextInt(50);
 		int red = ran.nextInt(256);
 		int green = ran.nextInt(256);
 		int blue = ran.nextInt(256);
-		return new PicGene(x1, x2, y1, y2, alpha, red, green, blue, mark);
+		return new PicGene(x1, x2, x3, y1, y2, y3, alpha, red, green, blue);
 	}
 	
 	public PicGenoType picGenoType_generator() {

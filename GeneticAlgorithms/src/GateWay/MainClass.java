@@ -34,8 +34,8 @@ public class MainClass {
 		
 		int num_genes = 100;
 		String filename = "test.png";
-		int init_pop = 400;
-		int maintained_popsize = 800;
+		int init_pop = 100;
+		int maintained_popsize = 200;
 		int terminate_gen = 100000;
 		int terminate_score = 95;
 		

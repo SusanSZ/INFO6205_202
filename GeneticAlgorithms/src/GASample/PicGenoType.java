@@ -43,9 +43,36 @@ public class PicGenoType extends GenoType {
 		for(int i = 0; i < this.getGeneNums(); i++) {
 			PicGene g = (PicGene)genes[i];
 			int[] cords = g.get_cord();
-			for(int x = cords[0]; x < cords[1]; x++) {
-				for(int y = cords[2]; y < cords[3]; y++) {
-					pixels[x][y] = Color.addColorToBackground(pixels[x][y], g.getColor());
+			for(int x = cords[0]; x < cords[2]; x++) {
+				if(x <= cords[3]) {
+					double tan1 = (cords[5] - cords[1]) * 1.0 / (cords[4] - cords[0]);
+					double tan2 = (cords[3] - cords[1]) * 1.0 / (cords[2] - cords[0]);
+					double bigger_tan = Math.max(tan1, tan2);
+					double smaller_tan = Math.min(tan1, tan2);
+					int start = PicGene.getEdge(smaller_tan, cords[0], cords[1], x);
+					int end = PicGene.getEdge(bigger_tan, cords[0], cords[1], x);
+					if(start <= 0) start = 0;
+					else if(start >= Picture.PIXEL_X) start = Picture.PIXEL_X - 1;
+					if(end <= 0) end = 0;
+					else if(end >= Picture.PIXEL_Y) end = Picture.PIXEL_Y - 1;
+					for( int y = start; y <= end; y++) {
+						pixels[x][y] = Color.addColorToBackground(pixels[x][y], g.getColor());
+					}
+				}
+				else {
+					double tan1 = (cords[5] - cords[3]) * 1.0 / (cords[4] - cords[2]);
+					double tan2 = (cords[1] - cords[3]) * 1.0 / (cords[0] - cords[2]);
+					double bigger_tan = Math.max(tan1, tan2);
+					double smaller_tan = Math.min(tan1, tan2);
+					int start = PicGene.getEdge(bigger_tan, cords[2], cords[3], x);
+					int end = PicGene.getEdge(smaller_tan, cords[2], cords[3], x);
+					if(start <= 0) start = 0;
+					else if(start >= Picture.PIXEL_X) start = Picture.PIXEL_X - 1;
+					if(end <= 0) end = 0;
+					else if(end >= Picture.PIXEL_Y) end = Picture.PIXEL_Y - 1;
+					for( int y = start; y <= end; y++) {
+						pixels[x][y] = Color.addColorToBackground(pixels[x][y], g.getColor());
+					}
 				}
 			}
 		}

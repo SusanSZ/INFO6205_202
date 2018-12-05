@@ -82,12 +82,4 @@ public class Picture extends Individual implements Comparable<Picture>{
 		return new_pic;
 	}
 	
-	public Gene get_marked_gene(int mark) {
-		Gene[] genes = geno.getGenes();
-		for(int i = 0; i < genes.length; i++) {
-			if(genes[i].getMark() == mark)
-				return genes[i];
-		}
-		return null;
-	}
 }

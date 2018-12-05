@@ -1,10 +1,12 @@
 package UnitTests;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
 import org.junit.*;
 
+import GAFrame.Individual;
 import GASample.*;
 import GateWay.GAHelper;
 import Utils.Color;
@@ -12,20 +14,20 @@ import Utils.ImagePainter;
 import Utils.ImageReader;
 
 public class TestPainter{
-	//@Test
-	public void draw() {
+	@Test
+	public void testdraw() {
 		Random r = new Random();
-		int width = 640;
-		int height = 480;
-		Color[][] pixels = new Color[width][height];
-		for(int i = 0; i < width; i++) {
-			for(int j = 0; j < height; j++) {
-				pixels[i][j] = new Color();
-				pixels[i][j].set(r.nextInt(255),r.nextInt(255),r.nextInt(255),r.nextInt(255));
-			}
+		GAHelper helper = new GAHelper(100, 100, 10);
+		int width = 100;
+		int height = 100;
+		Env e = helper.configureEnv(10, null);
+		List<Individual> pictures = e.getPopulation();
+		int filecount = 0;
+		for(Individual i : pictures) {
+			Picture p = (Picture)i;
+			p.toFile(filecount+".png");
+			filecount++;
 		}
-		ImagePainter painter = new ImagePainter(pixels);
-		painter.output("test.png");
 	}
 	
 	//@Test
@@ -36,7 +38,7 @@ public class TestPainter{
 		p.express();
 	}
 	
-	@Test
+	//@Test
 	public void testReadandResize() {
 		Color[][] targetcolors = null;
 		try {
