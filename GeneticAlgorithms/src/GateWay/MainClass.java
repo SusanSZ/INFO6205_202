@@ -62,13 +62,13 @@ public class MainClass {
 		System.out.println("...");
 		System.out.println("The environment will start in a while, several tips before it starts.");
 		System.out.println("\t1).Each time when generation goes to 10^n, the best individual will be stored, stored location would be \"./genimgs/\"");
-		System.out.println("\t2)um.....maybe no more tips regarding the application\n...\n...\n...\nGENERATION START!");
+		System.out.println("\t2).um.....maybe no more tips regarding the application\n...\n...\n...\nGENERATION START!");
 		
 		while(!e.shouldTerminate()) {
 			e.startNextGeneration();
 			int current_gen = e.getGeneration();
 			if(current_gen%10 == 0) {
-				System.out.println("now this is the " + current_gen + " generation of this environment");
+				System.out.println("\nnow this is the " + current_gen + " generation of this environment");
 				System.out.println("Best score is :" + e.getBestScore());
 				System.out.println("Mid score is : " + e.getMidScore());
 				String outpngname = "bestof_" + current_gen + ".png";
