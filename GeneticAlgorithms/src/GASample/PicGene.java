@@ -1,5 +1,7 @@
 package GASample;
 
+import java.util.Random;
+
 import GAFrame.Gene;
 import Utils.Color;
 
@@ -17,6 +19,7 @@ public class PicGene extends Gene{
 		this.x2 = x2;
 		this.y1 = y1;
 		this.y2 = y2;
+		color = new Color();
 		color.set(alpha, red, green, blue);
 	}
 	
@@ -31,10 +34,10 @@ public class PicGene extends Gene{
 	
 	public int[] get_cord() {
 		int[] cords = new int[4];
-		cords[0] = x1;
-		cords[1] = y1;
-		cords[2] = x2;
-		cords[3] = y2;
+		cords[0] = Math.min(x1, x2);
+		cords[1] = Math.max(x1, x2);
+		cords[2] = Math.min(y1, y2);
+		cords[3] = Math.max(y1, y2);
 		return cords;
 	}
 	
@@ -49,10 +52,11 @@ public class PicGene extends Gene{
 
 	public static PicGene produce(PicGene g1, PicGene g2) {
 		if(g1.getMark() == g2.getMark()) {
-			int x1 = (g1.x1 + g2.x1)/2;
-			int x2 = (g1.x2 + g2.x2)/2;
-			int y1 = (g1.y1 + g2.y1)/2;
-			int y2 = (g1.y2 + g2.y2)/2;
+			Random rd = new Random();
+			int x1 = Math.min(g1.x1, g2.x1) + rd.nextInt(Math.abs(g1.x1 - g2.x1)+1);
+			int x2 = Math.min(g1.x2, g2.x2) + rd.nextInt(Math.abs(g1.x2 - g2.x2)+1);
+			int y1 = Math.min(g1.y1, g2.y1) + rd.nextInt(Math.abs(g1.y1 - g2.y1)+1);
+			int y2 = Math.min(g1.y2, g2.y2) + rd.nextInt(Math.abs(g1.y2 - g2.y2)+1);
 			Color c = Color.avgColor(g1.color, g2.color);
 			return new PicGene(x1,x2,y1,y2,c,g1.getMark());
 		}

@@ -27,6 +27,7 @@ public class Env extends Nature{
 		}
 		population.addAll(new_born);
 		is_population_sorted = false;
+		generation++;
 	}
 
 	@Override
@@ -48,8 +49,8 @@ public class Env extends Nature{
 	}
 	
 	public boolean shouldTerminate() {
-		if(terminate_generation >= generation) return true;
-		if(((Picture)getBestIndividual()).compareTo((Picture)target_ind) > terminate_score) return true;
+		if(terminate_generation <= generation) return true;
+		//if(((Picture)getBestIndividual()).compareTo((Picture)target_ind) > terminate_score) return true;
 		return false;
 	}
 	

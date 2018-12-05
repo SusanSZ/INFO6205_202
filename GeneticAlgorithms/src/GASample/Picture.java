@@ -9,7 +9,7 @@ public class Picture extends Individual implements Comparable<Picture>{
 	public boolean isExpressed;
 	
 	private Picture() {
-		super(new PicGenoType());
+		super(new PicGenoType(0,0));
 		isExpressed = true;
 	}
 	
@@ -29,6 +29,7 @@ public class Picture extends Individual implements Comparable<Picture>{
 	 * @param filename, the output filename, can be anything similar to sample.png
 	 */
 	public void toFile(String filename) {
+		express();
 		PicPhenoType picpheno = (PicPhenoType)pheno;
 		ImagePainter painter = new ImagePainter(picpheno.getcolors());
 		painter.output(filename);
@@ -53,7 +54,7 @@ public class Picture extends Individual implements Comparable<Picture>{
 				int green = Math.abs((color1[i][j].getGreen()) - (color2[i][j].getGreen()));
 				int blue = Math.abs((color1[i][j].getBlue()) - (color2[i][j].getBlue()));
 				int red = Math.abs((color1[i][j].getRed()) - (color2[i][j].getRed()));
-				grade +=  -(alpha + red + green + blue);
+				grade +=  -(alpha/10 + red + green + blue);
 			}
 		return grade;
 	}

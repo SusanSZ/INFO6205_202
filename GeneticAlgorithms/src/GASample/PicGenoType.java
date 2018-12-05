@@ -7,30 +7,40 @@ import Utils.Color;
 
 public class PicGenoType extends GenoType {
 	
-	private int picsize_x;
-	private int picsize_y;
+	private final int picsize_x;
+	private final int picsize_y;
 	
-	public PicGenoType(int gene_size) {
+	public PicGenoType(int gene_size, int x, int y) {
 		super(gene_size);
+		picsize_x = x;
+		picsize_y = y;
 	}
 	
-	public PicGenoType() {
+	public PicGenoType(int x, int y) {
 		super(1);
+		picsize_x = x;
+		picsize_y = y;
 	}
 	
-	public void setSize(int picsize_x, int picsize_y) {
-		this.picsize_x = picsize_x;
-		this.picsize_y = picsize_y;
-	}
+//	public void setSize(int picsize_x, int picsize_y) {
+//		this.picsize_x = picsize_x;
+//		this.picsize_y = picsize_y;
+//	}
 	
 	@Override
 	public PhenoType expression() {
 		Color[][] pixels = new Color[picsize_x][picsize_y];
+		for(int i = 0; i < picsize_x; i++) 
+			for(int j = 0; j < picsize_y; j++) {
+				pixels[i][j] = new Color();
+				pixels[i][j].set(0,0,0,0);
+			}
+		
 		for(int i = 0; i < this.getGeneNums(); i++) {
 			PicGene g = (PicGene)genes[i];
 			int[] cords = g.get_cord();
-			for(int x = cords[0]; x <= cords[2]; x++) {
-				for(int y = cords[1]; y <= cords[3]; y++) {
+			for(int x = cords[0]; x < cords[1]; x++) {
+				for(int y = cords[2]; y < cords[3]; y++) {
 					pixels[x][y] = Color.addColorToBackground(pixels[x][y], g.getColor());
 				}
 			}
@@ -49,7 +59,7 @@ public class PicGenoType extends GenoType {
 				PicGene new_gene = PicGene.produce(genes_1[i],genes_2[i]);
 				new_genes[i] = new_gene;
 			}
-			PicGenoType new_picgenotype = new PicGenoType();
+			PicGenoType new_picgenotype = new PicGenoType(this.picsize_x,this.picsize_y);
 			new_picgenotype.setGenes(new_genes);
 			return new_picgenotype;
 		}
@@ -58,11 +68,12 @@ public class PicGenoType extends GenoType {
 
 	@Override
 	public boolean crossoverable(GenoType that) {
-		if(that instanceof PicGenoType) 
-			return  this.picsize_x == ((PicGenoType)that).picsize_x && 
-					this.picsize_y == ((PicGenoType)that).picsize_y &&
-					this.getGeneNums() == that.getGeneNums();
-		else return false;
+//		if(that instanceof PicGenoType) 
+//			return  this.picsize_x == ((PicGenoType)that).picsize_x && 
+//					this.picsize_y == ((PicGenoType)that).picsize_y &&
+//					this.getGeneNums() == that.getGeneNums();
+//		else return false;
+		return true;
 	}
 	
 }

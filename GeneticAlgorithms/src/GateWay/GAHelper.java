@@ -27,6 +27,8 @@ public class GAHelper {
 		int y1 = ran.nextInt(pixels_y);
 		int x2 = ran.nextInt(pixels_x);
 		int y2 = ran.nextInt(pixels_y);
+		while(x1 == x2) x2 = ran.nextInt(pixels_x);
+		while(y1 == y2) y2 = ran.nextInt(pixels_y);
 		int alpha = ran.nextInt(256);
 		int red = ran.nextInt(256);
 		int green = ran.nextInt(256);
@@ -35,7 +37,7 @@ public class GAHelper {
 	}
 	
 	public PicGenoType picGenoType_generator() {
-		PicGenoType genotype = new PicGenoType();
+		PicGenoType genotype = new PicGenoType(pixels_x, pixels_y);
 		PicGene[] genes = new PicGene[gene_size];
 		for(int i = 0; i < gene_size; i++) {
 			genes[i] = picGene_generator(i);

@@ -20,7 +20,7 @@ public class ImageReader {
 	    	System.out.println(e);
 	    }
 	    
-	    BufferedImage resized = resize(img, 280, 210);
+	    BufferedImage resized = resize(img, 200);
 	    
 	    int w = resized.getWidth();
 	    int h = resized.getHeight();
@@ -35,10 +35,10 @@ public class ImageReader {
 	public static Color[][] getTargetColorArray(String targetPath, int width, int height) throws IOException{
     	File f = new File(targetPath);
     	BufferedImage img = ImageIO.read(f);
-	    BufferedImage resized = resize(img, width, height);
+	    BufferedImage resized = resize(img, width);
 	    int w = resized.getWidth();
 	    int h = resized.getHeight();
-	    Color[][] targetcolors = new Color[width][height];
+	    Color[][] targetcolors = new Color[w][h];
 	    for( int i = 0; i < w; i++ ) {
 	        for(int j = 0; j < h; j++ ) {
 	            int pixel = img.getRGB( i, j );
@@ -46,17 +46,19 @@ public class ImageReader {
 	    		int red = (pixel & 0x00ff0000) >> 16;
 	    		int green = (pixel & 0x0000ff00) >> 8;
 	    		int blue = pixel & 0x000000ff;
+	            targetcolors[i][j] = new Color();
 	            targetcolors[i][j].set(alpha, red, green, blue);
 	        }
 	    }
 	    return targetcolors;
 	}
 	
-	private static BufferedImage resize(BufferedImage img, int width, int height) {
-        Image tmp = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+	private static BufferedImage resize(BufferedImage img, int width) {
+		Image temp = img.getScaledInstance(width, -1, Image.SCALE_SMOOTH);
+		int height = temp.getHeight(null);
+        BufferedImage resized = new BufferedImage(width, height, img.getType());
         Graphics2D g2d = resized.createGraphics();
-        g2d.drawImage(tmp, 0, 0, null);
+        g2d.drawImage(temp, 0, 0, width, height, null);
         g2d.dispose();
         return resized;
     }
