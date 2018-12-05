@@ -6,10 +6,22 @@ import Utils.ImagePainter;
 
 public class Picture extends Individual implements Comparable<Picture>{
 
-	public boolean isExpressed = false;
+	public boolean isExpressed;
+	
+	private Picture() {
+		super(new PicGenoType());
+		isExpressed = true;
+	}
 	
 	public Picture(PicGenoType g) {
 		super(g);
+		isExpressed = false;
+	}
+	
+	public static Picture createTargetPicture(Color[][] colors) {
+		Picture p = new Picture();
+		p.pheno = new PicPhenoType(colors);
+		return p;
 	}
 	
 	/**draw this image to a png file

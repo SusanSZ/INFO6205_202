@@ -26,18 +26,44 @@ public class Env extends Nature{
 			new_born.add(new_pic);
 		}
 		population.addAll(new_born);
+		is_population_sorted = false;
 	}
 
 	@Override
 	public void elimination() {
 		population.sort(getPictureComparator());
+		is_population_sorted = true;
 		int size = population.size();
 		List<Individual> new_pop = population.subList(size/3, size);
 		population = new ArrayList<>(new_pop);
 	}
 	
+	@Override
+	public Individual getBestIndividual() {
+		if(!is_population_sorted) {
+			population.sort(getPictureComparator());
+			is_population_sorted = true;
+		}
+		return population.get(0);
+	}
+	
+	public boolean shouldTerminate() {
+		if(terminate_generation >= generation) return true;
+		if(((Picture)getBestIndividual()).compareTo((Picture)target_ind) > terminate_score) return true;
+		return false;
+	}
+	
+	public void startNextGeneration() {
+		if(generation < terminate_generation) {
+			elimination();
+			evolution(maintained_popsize);
+		}
+	}
+	
 	public Comparator getPictureComparator() {
 		return new PicComparator(target_ind);
 	}
+
+	
 
 }

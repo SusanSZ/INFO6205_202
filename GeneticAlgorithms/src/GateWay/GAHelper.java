@@ -7,13 +7,11 @@ import GASample.*;
 
 public class GAHelper {
 	
-	private int genes_count;
 	private int pixels_x;
 	private int pixels_y;
 	private int gene_size;
 	
-	public GAHelper(int gc, int px, int py, int gene_size) {
-		genes_count = gc;
+	public GAHelper(int px, int py, int gene_size) {
 		pixels_x = px;
 		pixels_y = py;
 		this.gene_size = gene_size;

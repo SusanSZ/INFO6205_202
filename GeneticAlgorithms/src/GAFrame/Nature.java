@@ -7,12 +7,32 @@ import java.util.List;
 public abstract class Nature {
 	
 	protected List<Individual> population;
-	private int generation;
+	protected int generation;
 	protected int mutation_pos_percentage;
 	protected Individual target_ind;
+	protected int terminate_generation;
+	protected int maintained_popsize;
+	protected int terminate_score;
+	protected boolean is_population_sorted = false;
 	
 	public Nature() {
 		population = new ArrayList<Individual>();
+	}
+	
+	public int getGeneration() {
+		return generation;
+	}
+	
+	public void setTerminateGen(int tg) {
+		this.terminate_generation = tg;
+	}
+	
+	public void setPopsize(int ps) {
+		this.maintained_popsize = ps;
+	}
+	
+	public void setTerminateScore(int ts) {
+		this.terminate_score = ts;
 	}
 	
 	public void set_target(Individual ind) {
@@ -26,6 +46,8 @@ public abstract class Nature {
 	public void add_ind(Individual ind) {
 		population.add(ind);
 	}
+	
+	public abstract Individual getBestIndividual();
 	
 	public abstract void evolution(int popsize);
 	

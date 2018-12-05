@@ -21,8 +21,8 @@ public class PicComparator implements Comparator<Individual> {
 		Picture target_pic = (Picture)target_ind;
 		int c1 = p1.compareTo(target_pic);
 		int c2 = p2.compareTo(target_pic);
-		if(c1 > c2) return 1;
-		else if(c1 < c2) return -1;
+		if(c1 > c2) return -1;
+		else if(c1 < c2) return 1;
 		else return 0;
 	}
 	
