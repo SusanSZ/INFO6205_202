@@ -72,7 +72,7 @@ public class Picture extends Individual implements Comparable<Picture>{
 		int grade = this.compareTo(that);
 		int total_pixels = PIXEL_X * PIXEL_Y;
 		double total_score = grade * 1.0 / (total_pixels * 4);
-		return total_score;
+		return Math.pow(total_score, 3);
 	}
 	
 	public static Picture crossover(Picture p1, Picture p2, int mutation_pos) {
