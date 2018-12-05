@@ -29,19 +29,18 @@ public class Picture extends Individual implements Comparable<Picture>{
 	
 	
 	public int compareTo(Picture that) {
-		//check whether genes has expressed 
 		if(!this.isExpressed) this.express();
 		if(!that.isExpressed) that.express();
-		//TODO implement compare method
+		
 		Color[][] color1 = ((PicPhenoType)this.pheno).getcolors();
 		Color[][] color2 = ((PicPhenoType)that.pheno).getcolors();
 		int grade = 0;
 		for(int i = 0; i < ((PicPhenoType)this.pheno).getcolors().length; i++)
 			for(int j = 0; j < ((PicPhenoType)this.pheno).getcolors()[0].length; j++) {
-				int alpha = Math.abs((color1[i][j]. & 0xFF) - (color2[i][j].to8bit() & 0xFF));
-				int green = Math.abs(((color1[i][j].>>>8) & 0xFF) - ((color2[i][j].>>>8) & 0xFF));
-				int blue = Math.abs(((color1[i][j].>>>16) & 0xFF) - ((color2[i][j].>>>16) & 0xFF));
-				int red = Math.abs(((color1[i][j].>>>24) & 0xFF) - ((color2[i][j].>>>24) & 0xFF));
+				int alpha = Math.abs((color1[i][j].getAlpha()) - (color2[i][j].getAlpha()));
+				int green = Math.abs((color1[i][j].getGreen()) - (color2[i][j].getGreen()));
+				int blue = Math.abs((color1[i][j].getBlue()) - (color2[i][j].getBlue()));
+				int red = Math.abs((color1[i][j].getRed()) - (color2[i][j].getRed()));
 				grade +=  -(alpha + red + green + blue);
 			}
 		return grade;

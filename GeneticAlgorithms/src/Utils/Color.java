@@ -5,6 +5,22 @@ public class Color {
 	private int red;
 	private int green;
 	private int blue;
+
+	public int getRed() {
+		return red;
+	}
+	
+	public int getGreen() {
+		return green;
+	}
+	
+	public int getAlpha() {
+		return alpha;
+	}
+	
+	public int getBlue() {
+		return blue;
+	}
 	
 	public void set(int alpha, int red, int green, int blue) {
 		if(alpha > 255 || alpha < 0 || red > 255 || red < 0 || green > 255 || green < 0 || blue > 255 || blue < 0)
