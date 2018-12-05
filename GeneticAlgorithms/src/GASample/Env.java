@@ -76,11 +76,11 @@ public class Env extends Nature{
 	
 	private void setMutationPos() {
 		double midscore = getMidScore();
-		if(midscore <= 0.1) mutation_pos_percentage = 70;
-		else if(midscore <= 0.3) mutation_pos_percentage = 60;
-		else if(midscore <= 0.5) mutation_pos_percentage = 50;
-		else if(midscore <= 0.7) mutation_pos_percentage = 30;
-		else if(midscore <= 0.9) mutation_pos_percentage = 20;
+		if(midscore <= 0.1) mutation_pos_percentage = 30;
+		else if(midscore <= 0.3) mutation_pos_percentage = 26;
+		else if(midscore <= 0.5) mutation_pos_percentage = 22;
+		else if(midscore <= 0.7) mutation_pos_percentage = 18;
+		else if(midscore <= 0.9) mutation_pos_percentage = 14;
 		else mutation_pos_percentage = 10;
 	}
 	

@@ -110,6 +110,11 @@ public class PicGenoType extends GenoType {
 		System.arraycopy(fromone, 0, new_genes, 0, fromone.length);
 		System.arraycopy(fromtwo, 0, new_genes, fromone.length, fromtwo.length);
 		shuffle(new_genes);
+		for(PicGene gene : new_genes) {
+			int r = rand.nextInt(101);
+			if(r <= mutation_pos_percentage)
+				gene.mutation();
+		}
 		PicGenoType new_picgenotype = new PicGenoType();
 		new_picgenotype.setGenes(new_genes);
 		return new_picgenotype;

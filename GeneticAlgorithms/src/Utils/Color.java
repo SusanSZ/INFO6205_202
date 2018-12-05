@@ -76,14 +76,14 @@ public class Color {
 		return new_color;
 	}
 	
-	public static double HSVdist(Color c1, Color c2) {
+	public static  int HSVdist(Color c1, Color c2) {
 		int[] hsv1 = c1.toHSV();
 		int[] hsv2 = c2.toHSV();
 		double dh = Math.min(Math.abs(hsv1[0] - hsv2[0]), 360 - Math.abs(hsv1[0] - hsv2[0])) / 180.0;
 		double ds = Math.abs(hsv1[1] - hsv2[1]) / 100;
 		double dv = Math.abs(hsv1[2] - hsv2[2]) / 255;
 		double distance = Math.sqrt(3 * dh * dh + 0.5 * ds * ds + 0.5 * dv * dv);
-		double dis_percentage = distance / 2 * 100;
+		int dis_percentage = (int) (distance / 2 * 10000);
 		return dis_percentage;
 	}
 	
