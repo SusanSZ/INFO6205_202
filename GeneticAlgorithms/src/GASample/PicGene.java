@@ -48,56 +48,33 @@ public class PicGene extends Gene{
 	@Override
 	public void mutation() {
 		Random r = new Random();
-		int mark = r.nextInt(8);
+		int mark = r.nextInt(5);
 		switch(mark) {
-			case 0:mutatex1();break;
-			case 1:mutatex2();break;
-			case 2:mutatey1();break;
-			case 3:mutatey2();break;
-			case 4:mutatealpha();break;
-			case 5:mutatered();break;
-			case 6:mutategreen();break;
-			case 7:mutateblue();break;
+			case 0:mutatealpha();break;
+			case 1:
+			case 2:mutatelocation();break;
+			case 3:
+			case 4:mutatecolor();break;
 		}
 	}
 
-	private void mutateblue() {
+	private void mutatecolor() {
 		Random r = new Random();
 		color.setBlue(r.nextInt(256));
-	}
-
-	private void mutategreen() {
-		Random r = new Random();
 		color.setGreen(r.nextInt(256));
-	}
-
-	private void mutatered() {
-		Random r = new Random();
 		color.setRed(r.nextInt(256));
 	}
-
+	
 	private void mutatealpha() {
 		Random r = new Random();
 		color.setAlpha(r.nextInt(256));
 	}
 
-	private void mutatey2() {
+	private void mutatelocation() {
 		Random r = new Random();
 		y2 = r.nextInt(Picture.PIXEL_Y);
-	}
-
-	private void mutatey1() {
-		Random r = new Random();
 		y1 = r.nextInt(Picture.PIXEL_Y);
-	}
-
-	private void mutatex2() {
-		Random r = new Random();
 		x2 = r.nextInt(Picture.PIXEL_X);
-	}
-
-	private void mutatex1() {
-		Random r = new Random();
 		x1 = r.nextInt(Picture.PIXEL_X);
 	}
 
