@@ -76,6 +76,34 @@ public class Color {
 		return new_color;
 	}
 	
+	public static int HSVdist(Color c1, Color c2) {
+		int[] hsv1 = c1.toHSV();
+		int[] hsv2 = c2.toHSV();
+		double dh = Math.min(Math.abs(hsv1[0] - hsv2[0]), 360 - Math.abs(hsv1[0] - hsv2[0])) / 180.0;
+		double ds = Math.abs(hsv1[1] - hsv2[1]) / 100;
+		double dv = Math.abs(hsv1[2] - hsv2[2]) / 255;
+		double distance = Math.sqrt(dh * dh + ds * ds + dv * dv);
+		int dis_percentage = (int) (distance / Math.sqrt(3) * 100);
+		return dis_percentage;
+	}
+	
+	public int[] toHSV() {
+		int[] hsv = new int[3];
+		double r = red * 1.0 / 255;
+		double g = green * 1.0 / 255;
+		double b = blue * 1.0 / 255;
+		double cmax = Math.max(Math.max(r, g),b);
+		double cmin = Math.min(Math.min(r, g),b);
+		double delta = cmax - cmin;
+		if(delta == 0) hsv[0] = 0;
+		else if (cmax == r) hsv[0] = (int) (60 * (g - b) / delta);
+		else if (cmax == g) hsv[0] = (int) (60 * (b - r)/delta + 120);
+		else hsv[0] = (int) (60 * (r - g)/delta + 240);
+		if(cmax == 0) hsv[1] = 0;
+		else hsv[1] =  (int) ((delta/cmax)*100);
+		hsv[2] = (int) (cmax * 255);;
+		return hsv;
+	}
 	
 	public static Color avgColor(Color c1, Color c2) {
 		Color new_color = new Color();

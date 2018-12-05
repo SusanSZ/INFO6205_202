@@ -68,18 +68,32 @@ public class Env extends Nature{
 		return bestscore;
 	}
 	
+	public double getMidScore() {
+		Picture mid = (Picture)getTargetIndividual(population.size()/2);
+		double midscore = mid.dist((Picture)target_ind);
+		return midscore;
+	}
+	
 	private void setMutationPos() {
-		double bestscore = getBestScore();
-		if(bestscore <= 20) mutation_pos_percentage = 60;
-		else if(bestscore <= 30) mutation_pos_percentage = 40;
-		else if(bestscore <= 50) mutation_pos_percentage = 25;
-		else if(bestscore <= 80) mutation_pos_percentage = 15;
-		else if(bestscore <= 90) mutation_pos_percentage = 5;
+		double midscore = getMidScore();
+		if(midscore <= 10) mutation_pos_percentage = 70;
+		else if(midscore <= 30) mutation_pos_percentage = 25;
+		else if(midscore <= 50) mutation_pos_percentage = 10;
+		else if(midscore <= 70) mutation_pos_percentage = 5;
 		else mutation_pos_percentage = 1;
 	}
 	
 	public Comparator getPictureComparator() {
 		return new PicComparator(target_ind);
+	}
+
+	@Override
+	public Individual getTargetIndividual(int target) {
+		if(!is_population_sorted) {
+			population.sort(getPictureComparator());
+			is_population_sorted = true;
+		}
+		return population.get(target);
 	}
 
 	

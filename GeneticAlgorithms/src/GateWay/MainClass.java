@@ -32,7 +32,6 @@ public class MainClass {
 		System.out.print("\nConfiguring ongoing, this might take sometime.Please be patient");
 		*/
 		
-		int width = 200;
 		int num_genes = 100;
 		String filename = "test.png";
 		int init_pop = 400;
@@ -42,11 +41,12 @@ public class MainClass {
 		
 		Color[][] targetcolors = null;
 		try {
-			targetcolors = ImageReader.getTargetColorArray("./targetimg/" + filename, width);
+			targetcolors = ImageReader.getTargetColorArray("./targetimg/" + filename);
 		} catch (IOException e) {
 			System.out.println("Warning: the image does not exists. Application will terminate right away.");
 			return;
 		}
+		int width = targetcolors.length;
 		int height = targetcolors[0].length;
 		GAHelper helper = new GAHelper(width, height, num_genes);
 		Picture targetPic = Picture.createTargetPicture(targetcolors);
@@ -69,6 +69,8 @@ public class MainClass {
 			int current_gen = e.getGeneration();
 			if(current_gen%10 == 0) {
 				System.out.println("now this is the " + current_gen + " generation of this environment");
+				System.out.println("Best score is :" + e.getBestScore());
+				System.out.println("Mid score is : " + e.getMidScore());
 				String outpngname = "bestof_" + current_gen + ".png";
 				System.out.println("The best individual of this generation will be stored as \"" + outpngname + "\"");
 				Picture best = (Picture)e.getBestIndividual();

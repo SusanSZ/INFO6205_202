@@ -59,13 +59,9 @@ public class Picture extends Individual implements Comparable<Picture>{
 		for(int i = 0; i < ((PicPhenoType)this.pheno).getcolors().length; i++)
 			for(int j = 0; j < ((PicPhenoType)this.pheno).getcolors()[0].length; j++) {
 				int alpha_diff = Math.abs((color1[i][j].getAlpha()) - (color2[i][j].getAlpha()));
-				int green_diff = Math.abs((color1[i][j].getGreen()) - (color2[i][j].getGreen()));
-				int blue_diff = Math.abs((color1[i][j].getBlue()) - (color2[i][j].getBlue()));
-				int red_diff = Math.abs((color1[i][j].getRed()) - (color2[i][j].getRed()));
-				if(alpha_diff < 100) grade+= 1;
-				if(green_diff < 20) grade += 1;
-				if(blue_diff < 20) grade += 1;
-				if(red_diff < 20) grade += 1;
+				int color_diff = Color.HSVdist(color1[i][j], color2[i][j]);
+				if(alpha_diff < 100) grade += 1;
+				if(color_diff < 20) grade += 3;
 			}
 		return grade;
 	}

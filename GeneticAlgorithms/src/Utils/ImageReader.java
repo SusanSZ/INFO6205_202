@@ -32,12 +32,11 @@ public class ImageReader {
 	    return targetPixel;
 	}
 	
-	public static Color[][] getTargetColorArray(String targetPath, int width) throws IOException{
+	public static Color[][] getTargetColorArray(String targetPath) throws IOException{
     	File f = new File(targetPath);
     	BufferedImage img = ImageIO.read(f);
-	    BufferedImage resized = resize(img, width);
-	    int w = resized.getWidth();
-	    int h = resized.getHeight();
+	    int w = img.getWidth();
+	    int h = img.getHeight();
 	    Color[][] targetcolors = new Color[w][h];
 	    for( int i = 0; i < w; i++ ) {
 	        for(int j = 0; j < h; j++ ) {

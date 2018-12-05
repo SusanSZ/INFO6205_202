@@ -47,6 +47,8 @@ public abstract class Nature {
 		population.add(ind);
 	}
 	
+	public abstract Individual getTargetIndividual(int target);
+	
 	public abstract Individual getBestIndividual();
 	
 	public abstract void evolution(int popsize);
