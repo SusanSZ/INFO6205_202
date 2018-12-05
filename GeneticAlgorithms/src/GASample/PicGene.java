@@ -76,6 +76,8 @@ public class PicGene extends Gene{
 		y1 = r.nextInt(Picture.PIXEL_Y);
 		x2 = r.nextInt(Picture.PIXEL_X);
 		x1 = r.nextInt(Picture.PIXEL_X);
+		while(x1 == x2) x2 = r.nextInt(Picture.PIXEL_X);
+		while(y1 == y2) y2 = r.nextInt(Picture.PIXEL_Y);
 	}
 
 	public static PicGene produce(PicGene g1, PicGene g2) {

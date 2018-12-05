@@ -36,7 +36,7 @@ public class Env extends Nature{
 		population.sort(getPictureComparator());
 		is_population_sorted = true;
 		int size = population.size();
-		List<Individual> new_pop = population.subList(size/3, size);
+		List<Individual> new_pop = population.subList(0, size/3);
 		population = new ArrayList<>(new_pop);
 	}
 	
