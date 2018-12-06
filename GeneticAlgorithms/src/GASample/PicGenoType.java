@@ -98,18 +98,28 @@ public class PicGenoType extends GenoType {
 	public GenoType cross(GenoType that) {
 		PicGene[] genes_1 = (PicGene[])this.getGenes();
 		PicGene[] genes_2 = (PicGene[])that.getGenes();
-		shuffle(genes_1);
-		shuffle(genes_2);
 		int N = genes_1.length;
+//		shuffle(genes_1);
+//		shuffle(genes_2);
+//		int N = genes_1.length;
+//		Random rand = new Random();
+//		int from_1 = N / 3 + rand.nextInt(N / 3);
+//		int from_2 = N - from_1;
+//		PicGene[] fromone = Arrays.copyOfRange(genes_1, 0, from_1);
+//		PicGene[] fromtwo = Arrays.copyOfRange(genes_2, 0, from_2);
+//		PicGene[] new_genes = new PicGene[fromone.length+fromtwo.length];
+//		System.arraycopy(fromone, 0, new_genes, 0, fromone.length);
+//		System.arraycopy(fromtwo, 0, new_genes, fromone.length, fromtwo.length);
+//		shuffle(new_genes);
+		PicGene[] new_genes = new PicGene[N];
 		Random rand = new Random();
-		int from_1 = N / 3 + rand.nextInt(N / 3);
-		int from_2 = N - from_1;
-		PicGene[] fromone = Arrays.copyOfRange(genes_1, 0, from_1);
-		PicGene[] fromtwo = Arrays.copyOfRange(genes_2, 0, from_2);
-		PicGene[] new_genes = new PicGene[fromone.length+fromtwo.length];
-		System.arraycopy(fromone, 0, new_genes, 0, fromone.length);
-		System.arraycopy(fromtwo, 0, new_genes, fromone.length, fromtwo.length);
-		shuffle(new_genes);
+		for(int i = 0; i < N; i++) {
+			int seed = rand.nextInt(101);
+			if(seed < 50)
+				new_genes[i] = (PicGene) genes_1[i].copy();
+			else
+				new_genes[i] = (PicGene) genes_2[i].copy();
+		}
 		PicGenoType new_picgenotype = new PicGenoType();
 		new_picgenotype.setGenes(new_genes);
 		return new_picgenotype;

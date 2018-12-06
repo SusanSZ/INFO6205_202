@@ -119,4 +119,10 @@ public class Color {
 	private static double mixColor(int c1, double a1, int c2, double a2) {
 		return c1 * a1 + c2 * a2 * (1 - a1); 
 	}
+	
+	public Color copy() {
+		Color color = new Color();
+		color.set(alpha, red, green, blue);
+		return color;
+	}
 }

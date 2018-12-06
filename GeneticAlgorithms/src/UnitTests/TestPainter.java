@@ -14,7 +14,7 @@ import Utils.ImagePainter;
 import Utils.ImageReader;
 
 public class TestPainter{
-	@Test
+	//@Test
 	public void testdraw() {
 		Random r = new Random();
 		GAHelper helper = new GAHelper(100, 100, 10);
@@ -27,6 +27,22 @@ public class TestPainter{
 			Picture p = (Picture)i;
 			p.toFile(filecount+".png");
 			filecount++;
+		}
+	}
+	@Test
+	public void testCross() {
+		GAHelper helper = new GAHelper(100, 100, 10);
+		PicGenoType pg1 = helper.picGenoType_generator();
+		PicGenoType pg2 = helper.picGenoType_generator();
+		Picture p1 = new Picture(pg1);
+		Picture p2 = new Picture(pg2);
+		p1.toFile("pg1.png");
+		p2.toFile("pg2.png");
+		Picture new_pic = Picture.crossover(p1, p2);
+		new_pic.toFile("nomutate.png");
+		for(int i = 0; i < 10; i++) {
+			new_pic.ind_mutation(1);
+			new_pic.toFile("mutate" + i +".png");
 		}
 	}
 	

@@ -158,4 +158,10 @@ public class PicGene extends Gene{
 //			Color c = Color.avgColor(g1.color, g2.color);
 //			return new PicGene(x1,x2,y1,y2,c);
 //	}
+
+	@Override
+	public Gene copy() {
+		PicGene gene = new PicGene(x1, x2, x3, y1, y2, y3, color.copy());
+		return gene;
+	}
 }
