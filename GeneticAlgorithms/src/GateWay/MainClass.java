@@ -34,8 +34,8 @@ public class MainClass {
 		
 		int num_genes = 100;
 		String filename = "test.png";
-		int init_pop = 100;
-		int maintained_popsize = 200;
+		int init_pop = 500;
+		int maintained_popsize = 1000;
 		int terminate_gen = 100000;
 		int terminate_score = 95;
 		
@@ -65,14 +65,16 @@ public class MainClass {
 		System.out.println("\t2).um.....maybe no more tips regarding the application\n...\n...\n...\nGENERATION START!");
 		
 		while(!e.shouldTerminate()) {
-			e.startNextGeneration();
+			int mutationcount = e.startNextGeneration();
 			int current_gen = e.getGeneration();
-			if(current_gen%10 == 0) {
+			if(current_gen == 10 || current_gen == 20 || current_gen == 50 || current_gen == 100 || current_gen == 200 || current_gen == 500 || current_gen%1000 == 0) {
 				System.out.println("\nnow this is the " + current_gen + " generation of this environment");
-				System.out.println("Best score is :" + e.getBestScore());
-				System.out.println("Mid score is : " + e.getMidScore());
+				System.out.println("\tcurrent mutate possibility is: " + e.getMutePos());
+				System.out.println("\tMutation happens: " + mutationcount +" times.");
+				System.out.println("\tBest score is :" + e.getBestScore());
+				System.out.println("\tMid score is : " + e.getMidScore());
 				String outpngname = "bestof_" + current_gen + ".png";
-				System.out.println("The best individual of this generation will be stored as \"" + outpngname + "\"");
+				System.out.println("\tThe best individual of this generation will be stored as \"" + outpngname + "\"");
 				Picture best = (Picture)e.getBestIndividual();
 				best.toFile(outpngname);
 			}

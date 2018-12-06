@@ -8,4 +8,6 @@ public abstract class Individual {
 		geno = g;
 	}
 	
+	public abstract void ind_mutation(int num_to_mutate);
+	
 }

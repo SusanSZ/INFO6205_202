@@ -19,6 +19,10 @@ public abstract class Nature {
 		population = new ArrayList<Individual>();
 	}
 	
+	public int getMutePos() {
+		return mutation_pos_percentage;
+	}
+	
 	public List<Individual> getPopulation(){
 		return population;
 	}
@@ -55,7 +59,7 @@ public abstract class Nature {
 	
 	public abstract Individual getBestIndividual();
 	
-	public abstract void evolution(int popsize);
+	public abstract int evolution(int popsize);
 	
 	public abstract void elimination();
 }

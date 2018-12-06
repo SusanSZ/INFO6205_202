@@ -34,7 +34,7 @@ public class GAHelper {
 			x3 = ran.nextInt(pixels_x);
 			y3 = ran.nextInt(pixels_y);
 		}
-		int alpha = 50 + ran.nextInt(50);
+		int alpha = 50 + ran.nextInt(100);
 		int red = ran.nextInt(256);
 		int green = ran.nextInt(256);
 		int blue = ran.nextInt(256);

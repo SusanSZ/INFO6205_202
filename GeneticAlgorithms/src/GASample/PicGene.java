@@ -117,16 +117,10 @@ public class PicGene extends Gene{
 	}
 	
 	@Override
-	public void mutation() {
-		Random r = new Random();
-		int mark = r.nextInt(5);
-		switch(mark) {
-			case 0:mutatealpha();break;
-			case 1:
-			case 2:mutatelocation();break;
-			case 3:
-			case 4:mutatecolor();break;
-		}
+	public void gene_mutation() {
+		mutatealpha();
+		mutatelocation();
+		mutatecolor();
 	}
 
 	private void mutatecolor() {
@@ -138,7 +132,7 @@ public class PicGene extends Gene{
 	
 	private void mutatealpha() {
 		Random r = new Random();
-		color.setAlpha(50 + r.nextInt(50));
+		color.setAlpha(50 + r.nextInt(100));
 	}
 
 	private void mutatelocation() {

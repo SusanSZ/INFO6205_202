@@ -2,6 +2,6 @@ package GAFrame;
 
 public abstract class Gene {
 
-	public abstract void mutation();
+	public abstract void gene_mutation();
 
 }

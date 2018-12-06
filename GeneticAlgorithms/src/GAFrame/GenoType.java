@@ -12,7 +12,7 @@ public abstract class GenoType {
 	 * @param mutation_pos_percentage -> the possibility(%) that a gene will mutate during crossover
 	 * @return a new generated GenoType
 	 */
-	public abstract GenoType cross(GenoType that,int mutation_pos_percentage);
+	public abstract GenoType cross(GenoType that);
 	
 	/** This function defines the how to transform GenoType to PhenoType
 	 * 
