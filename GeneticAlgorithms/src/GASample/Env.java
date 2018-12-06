@@ -11,9 +11,13 @@ import Utils.PicComparator;
 
 public class Env extends Nature{
 	
+	private double midscore;
+	private double bestscore;
 	@Override
 	public int evolution(int popsize) {
 		// TODO Auto-generated method stub
+		setMidScore(getMidScore());
+		setBestScore(getBestScore());
 		Random r = new Random();
 		this.setMutationPos();
 		int num_to_mutate = (mutation_pos_percentage/10) * (mutation_pos_percentage/10);
@@ -31,7 +35,10 @@ public class Env extends Nature{
 			Picture p2 = (Picture) population.get(n2);
 			Picture new_pic = Picture.crossover(p1, p2);
 			if(r.nextInt(101) < mutation_pos_percentage) {
-				new_pic.ind_mutation(num_to_mutate);
+				if(midscore < 0.035)
+					new_pic.global_mutation(num_to_mutate);
+				else
+					new_pic.minor_mutation(num_to_mutate);
 				mutation_count ++;
 			}
 			new_born.add(new_pic);
@@ -55,12 +62,16 @@ public class Env extends Nature{
 	
 	@Override
 	public Individual getBestIndividual() {
-		if(!is_population_sorted) {
-			population.sort(getPictureComparator());
-			is_population_sorted = true;
-		}
 		int size = population.size();
-		return population.get(size-1);
+		return getTargetIndividual(size-1);
+	}
+	
+	private void setMidScore(double s) {
+		midscore = s;
+	}
+	
+	private void setBestScore(double s) {
+		bestscore = s;
 	}
 	
 	public boolean shouldTerminate() {

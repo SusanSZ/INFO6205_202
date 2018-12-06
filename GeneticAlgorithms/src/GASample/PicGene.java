@@ -122,6 +122,49 @@ public class PicGene extends Gene{
 		mutatelocation();
 		mutatecolor();
 	}
+	
+	public void gene_mutation_minor() {
+		mutatecolor_minor();
+		mutatelocation_minor();
+		mutatealpha_minor();
+	}
+	
+	private void mutatecolor_minor() {
+		//TODO
+		Random rand = new Random();
+		int r = color.getRed();
+		int g = color.getGreen();
+		int b = color.getBlue();
+		r = r + rand.nextInt(100) - rand.nextInt(100);
+		g = g + rand.nextInt(100) - rand.nextInt(100);
+		b = b + rand.nextInt(100) - rand.nextInt(100);
+		if(r < 0) r = 0;
+		if(g < 0) g = 0;
+		if(b < 0) b = 0;
+		if(r > 255) r = 255;
+		if(g > 255) g = 255;
+		if(b > 255) b = 255;
+		this.color.set(color.getAlpha(), r, g, b);
+	}
+	
+	private void mutatealpha_minor() {
+		Random rand = new Random();
+		int alpha = color.getAlpha();
+		alpha = alpha + rand.nextInt(25) - rand.nextInt(25);
+		if(alpha < 0) alpha = 0;
+		if(alpha > 255) alpha = 255;
+		this.color.setAlpha(alpha);
+	}
+	
+	private void mutatelocation_minor() {
+		Random rand = new Random();
+		x1 = x1 * ((85 + rand.nextInt(35))/100);
+		x2 = x2 * ((85 + rand.nextInt(35))/100);
+		x3 = x3 * ((85 + rand.nextInt(35))/100);
+		y1 = y1 * ((85 + rand.nextInt(35))/100);
+		y2 = y2 * ((85 + rand.nextInt(35))/100);
+		y3 = y3 * ((85 + rand.nextInt(35))/100);
+	}
 
 	private void mutatecolor() {
 		Random r = new Random();
@@ -164,4 +207,6 @@ public class PicGene extends Gene{
 		PicGene gene = new PicGene(x1, x2, x3, y1, y2, y3, color.copy());
 		return gene;
 	}
+
+	
 }

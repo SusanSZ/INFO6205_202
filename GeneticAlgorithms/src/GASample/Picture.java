@@ -45,12 +45,23 @@ public class Picture extends Individual{
 		painter.output(filename);
 	}
 	@Override
-	public void ind_mutation(int num_to_mutate) {
+	public void global_mutation(int num_to_mutate) {
 		PicGene[] genes = (PicGene[]) geno.getGenes();
 		Random rand = new Random();
 		for(int i = 0; i < num_to_mutate; i++) {
 			int to_mutate = rand.nextInt(genes.length);
 			genes[to_mutate].gene_mutation();
+		}
+		isExpressed = false;
+	}
+	
+	@Override
+	public void minor_mutation(int num_to_mutate) {
+		PicGene[] genes = (PicGene[]) geno.getGenes();
+		Random rand = new Random();
+		for(int i = 0; i < num_to_mutate; i++) {
+			int to_mutate = rand.nextInt(genes.length);
+			genes[to_mutate].gene_mutation_minor();
 		}
 		isExpressed = false;
 	}

@@ -41,7 +41,7 @@ public class TestPainter{
 		Picture new_pic = Picture.crossover(p1, p2);
 		new_pic.toFile("nomutate.png");
 		for(int i = 0; i < 10; i++) {
-			new_pic.ind_mutation(1);
+			new_pic.global_mutation(1);
 			new_pic.toFile("mutate" + i +".png");
 		}
 	}
