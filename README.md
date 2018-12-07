@@ -6,7 +6,7 @@ This is the <a href="https://github.com/SummerShoohaw/INFO6205_202/blob/master/R
 
 ## How to run the application
   
-  1). Prepare the target picture (only PNG image is accepted), make sure the color model is 32bit, and dimensions better less than 200x200
+  1). Prepare the target picture (only PNG image is accepted), make sure the color model is 32bit, and dimensions better less than 200x200, choose some simple pictures such as chrome logo, firefox logo or pepsi logo, something like this.
   
   2). Pull the repository, copy the target picture to folder ```./INFO6205_02/GeneticAlgorithms/targetimg/```
   
