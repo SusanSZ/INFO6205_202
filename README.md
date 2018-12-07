@@ -13,5 +13,6 @@ This application uses genetic algorithm that renders pictures by simply using tr
   4). Get a cup of coffee, and wait for the result, result will be stored in ```./INFO6205_02/GeneticAlgorithms/outputimages/```
 
 ## This is what I got
-
+   
+  ![Alt text](./GeneticAlgorithms/examples.jpg?raw=true "Examples")
   
