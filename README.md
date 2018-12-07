@@ -16,6 +16,6 @@ This application uses genetic algorithm that renders pictures by simply using tr
    
   ![Alt text](./GeneticAlgorithms/examples.jpg?raw=true "Examples")
   
-## contact me if you have recommendation for my algorithms!!!
+## Contact me if you have recommendation for my algorithm!!!
    
    * Email: summershoohaw@gmail.com
