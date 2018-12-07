@@ -18,4 +18,4 @@ This application uses genetic algorithm that renders pictures by simply using tr
   
 ## contact me if you have recommendation for my algorithms!!!
    
-   * summershoohaw@gmail.com
+   * Email: summershoohaw@gmail.com
