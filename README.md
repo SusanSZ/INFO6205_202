@@ -1,6 +1,6 @@
 # Genetic Algorithms to draw pictures
 
-This application uses genetic algorithm that renders pictures by simply using triangles.
+This application implements genetic algorithm to render pictures by simply using triangles.
 
 ## How to run the application
   
