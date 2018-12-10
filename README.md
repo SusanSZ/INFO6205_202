@@ -9,9 +9,13 @@ This application implements genetic algorithm to render pictures by simply using
   1). Choose some simple pictures such as chrome logo, firefox logo, pepsi logo or so forth as a target picture.
   
   2). Prepare the image. ATTENTION PLEASE!!!
+  
               (a). Only `PNG` image is accepted.
+              
               (b). make sure the `color model` is `32bit`.
+              
               (c). name the png file as `test.png`.
+              
               (d). dimensions better less than 200x200 (I would recommend 75x75).
   
   3). Pull the repository, copy the target picture to folder ```./INFO6205_02/GeneticAlgorithms/targetimg/```
