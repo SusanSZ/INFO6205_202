@@ -2,7 +2,7 @@
 
 This application implements genetic algorithm to render pictures by simply using triangles.
 
-This is the <a href="https://github.com/SummerShoohaw/INFO6205_202/blob/master/Report.pdf">REPORT</a> for the project
+# This is the <a href="https://github.com/SummerShoohaw/INFO6205_202/blob/master/Report.pdf">REPORT</a> for the project
 
 ## How to run the application
   
