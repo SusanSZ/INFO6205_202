@@ -14,7 +14,7 @@ This application implements genetic algorithm to render pictures by simply using
   　　(c). Rename the png file as _`test.png`_.<br>
   　　(d). Dimensions better less than 200x200 (I would recommend 75x75).<br>
   
-  3). Pull the repository, copy the target picture to folder ```./INFO6205_02/GeneticAlgorithms/targetimg/```
+  3). Pull the repository, copy the prepared image `tesg.png` to folder ```./INFO6205_02/GeneticAlgorithms/targetimg/```
   
   4). Open the project using Eclipse and run it, or you can simply run the ```MainClass``` under package ```GateWay```
   
