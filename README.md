@@ -6,13 +6,19 @@ This application implements genetic algorithm to render pictures by simply using
 
 ## How to run the application
   
-  1). Prepare the target picture (only `PNG` image is accepted), make sure the `color model` is `32bit`, name the png file as `test.png`, and dimensions better less than 200x200 (I would recommend 75x75), choose some simple pictures such as chrome logo, firefox logo, pepsi logo or so forth.
+  1). Choose some simple pictures such as chrome logo, firefox logo, pepsi logo or so forth as a target picture.
   
-  2). Pull the repository, copy the target picture to folder ```./INFO6205_02/GeneticAlgorithms/targetimg/```
+  2). Prepare the image. ATTENTION PLEASE!!!
+              (a). Only `PNG` image is accepted.
+              (b). make sure the `color model` is `32bit`.
+              (c). name the png file as `test.png`.
+              (d). dimensions better less than 200x200 (I would recommend 75x75).
   
-  3). Open the project using Eclipse and run it, or you can simply run the ```MainClass``` under package ```GateWay```
+  3). Pull the repository, copy the target picture to folder ```./INFO6205_02/GeneticAlgorithms/targetimg/```
   
-  4). Get a cup of coffee, and wait for the result, result will be stored in ```./INFO6205_02/GeneticAlgorithms/outputimages/```
+  4). Open the project using Eclipse and run it, or you can simply run the ```MainClass``` under package ```GateWay```
+  
+  5). Get a cup of coffee, and wait for the result, result will be stored in ```./INFO6205_02/GeneticAlgorithms/outputimages/```
 
 ## This is what I got
    
