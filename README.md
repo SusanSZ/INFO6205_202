@@ -10,9 +10,9 @@ This application implements genetic algorithm to render pictures by simply using
   
   2). Prepare the image according to above directions:<br>
   　　(a). Only _`PNG`_ image is accepted.<br>
-  　　(b). make sure the picture is in `RGB color space with alpha channel`.<br>
-  　　(c). name the png file as _`test.png`_.<br>
-  　　(d). dimensions better less than 200x200 (I would recommend 75x75).<br>
+  　　(b). Make sure the picture is in `RGB color space with alpha channel`.<br>
+  　　(c). Rename the png file as _`test.png`_.<br>
+  　　(d). Dimensions better less than 200x200 (I would recommend 75x75).<br>
   
   3). Pull the repository, copy the target picture to folder ```./INFO6205_02/GeneticAlgorithms/targetimg/```
   
