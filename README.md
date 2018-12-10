@@ -10,7 +10,7 @@ This application implements genetic algorithm to render pictures by simply using
   
   2). Prepare the image according to above directions:<br>
   　　(a). Only _`PNG`_ image is accepted.<br>
-  　　(b). make sure the _`color model`_ is _`32bit`_.<br>
+  　　(b). make sure the picture is in `RGB color space with alpha channel`.<br>
   　　(c). name the png file as _`test.png`_.<br>
   　　(d). dimensions better less than 200x200 (I would recommend 75x75).<br>
   
