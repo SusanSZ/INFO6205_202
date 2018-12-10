@@ -9,7 +9,7 @@ This application implements genetic algorithm to render pictures by simply using
   1). Choose some simple pictures such as chrome logo, firefox logo, pepsi logo or so forth as a target picture.
   
   2). Prepare the image according to above directions:<br>
-    (a). Only _`PNG`_ image is accepted.<br>
+  　　(a). Only _`PNG`_ image is accepted.<br>
     (b). make sure the _`color model`_ is _`32bit`_.<br>
     (c). name the png file as _`test.png`_.<br>
     (d). dimensions better less than 200x200 (I would recommend 75x75).<br>
