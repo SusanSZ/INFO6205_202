@@ -10,13 +10,13 @@ This application implements genetic algorithm to render pictures by simply using
   
   2). Prepare the image. ATTENTION PLEASE!!!
   
-              (a). Only `PNG` image is accepted.
+   (a). Only `PNG` image is accepted.
               
-              (b). make sure the `color model` is `32bit`.
+   (b). make sure the `color model` is `32bit`.
               
-              (c). name the png file as `test.png`.
+   (c). name the png file as `test.png`.
               
-              (d). dimensions better less than 200x200 (I would recommend 75x75).
+   (d). dimensions better less than 200x200 (I would recommend 75x75).
   
   3). Pull the repository, copy the target picture to folder ```./INFO6205_02/GeneticAlgorithms/targetimg/```
   
